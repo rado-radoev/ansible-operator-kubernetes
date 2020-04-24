@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: visitors-ansible-operator
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - secrets
+  verbs:
+  - create
+  - get
+  - list
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - create
+  - get
+  - update
