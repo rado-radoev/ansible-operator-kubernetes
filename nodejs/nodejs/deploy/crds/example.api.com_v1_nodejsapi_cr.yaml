@@ -3,6 +3,8 @@ kind: NodejsAPI
 metadata:
   name: example-nodejsapi
   namespace: sharp-nonprod
+  annotations:
+    "ansible.operator-sdk/verbosity": "3"
 spec:
   # Add fields here
   size: 3

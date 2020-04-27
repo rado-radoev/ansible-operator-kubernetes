@@ -22,13 +22,13 @@ spec:
       containers:
       - name: "{{ app_name }}" 
         image: quay.io/superlamer/storybook
-          resources:
-            limits:
-              cpu: 100m
-              memory: 100Mi
-            requests:
-              cpu: 50m
-              memory: 50Mi
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
         ports:
         - containerPort: "{{ app_port }}"
         env:
