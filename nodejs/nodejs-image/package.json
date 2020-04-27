@@ -1,9 +1,9 @@
 {
-    "name":"nodejs-docker-example",
-    "version":"1.0.0",
+    "name": "nodejs-docker-example",
+    "version": "1.0.0",
     "description": "Node.js on Docker",
     "author": "Radodslav Radoev",
-    "main":"server.js",
+    "main": "server.js",
     "scripts": {
         "start": "node server.js"
     },

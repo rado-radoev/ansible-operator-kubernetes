@@ -1,2 +1,24 @@
 ---
-# tasks file for nodejsapi
+- name: Apply Namespace
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'namespace.j2') }}"
+    validate_certs: no
+
+- name: Apply Creds
+  k8s: 
+    state: present
+    definition: "{{ lookup('template', 'quay-creds.j2') }}"
+    validate_certs: no
+
+- name: Apply Service
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'service.j2') }}"
+    validate_certs: no  
+
+- name: Apply Deployment
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'deployment.j2') }}"
+    validate_certs: no

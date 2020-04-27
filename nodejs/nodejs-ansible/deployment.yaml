@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storybook
+  namespace: sharp-nonprod
+  labels:
+    version: 1.0.0
+    managed-by: anisble
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: storybook-web
+  template:
+    metadata:
+      labels:
+        component: storybook-web
+        runtime: nginx
+        version: 1.0.0
+        managed-by: anisble
+    spec:
+      containers:
+      - name: storybook 
+        image: quay.io/superlamer/storybook
+        # resources:
+        #   limits:
+        #     cpu: 100m
+        #     memory: 100Mi
+        #   requests:
+        #     cpu: 50m
+        #     memory: 50Mi
+        ports:
+        - containerPort: 8080
+        env:
+          - name: APP_HOST
+            value: "0.0.0.0"
+          - name: APP_PORT
+            value: "8080"
+          - name: NODE_ENV
+            value: "development"
+      imagePullSecrets:
+      - name: quay-creds

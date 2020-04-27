@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ app_name }}"
+  namespace: "{{ namespace }}"
+  labels:
+    managed-by: "{{ managed_by }}"
+spec:
+  type: LoadBalancer
+  selector:
+    component: "{{ app_label }}"
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

@@ -2,6 +2,13 @@ apiVersion: example.api.com/v1
 kind: NodejsAPI
 metadata:
   name: example-nodejsapi
+  namespace: sharp-nonprod
 spec:
   # Add fields here
   size: 3
+  namespace: sharp-nonprod
+  app_name: storybook
+  app_type: web
+  app_host: "0.0.0.0"
+  app_port: 8080
+  node_env: development

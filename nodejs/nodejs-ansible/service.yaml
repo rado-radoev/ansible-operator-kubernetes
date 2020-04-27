@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: storybook
+  namespace: sharp-nonprod
+  labels:
+    managed-by: ansible
+spec:
+  type: LoadBalancer
+  selector:
+    component: storybook-web
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001

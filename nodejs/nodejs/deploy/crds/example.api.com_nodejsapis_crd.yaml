@@ -2,6 +2,7 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: nodejsapis.example.api.com
+  namespace: sharp-nonprod
 spec:
   group: example.api.com
   names:
@@ -15,6 +16,29 @@ spec:
   validation:
     openAPIV3Schema:
       type: object
+      properties:
+        spec:
+          type: object
+          properties:
+            size: 
+              type: integer
+            namespace:
+              type: string
+            app_name: 
+              type: string
+            app_type:
+              type: string
+            app_host:
+              type: string
+            app_port:
+              type: integer
+            node_env:
+              type: string
+              pattern: '(^devel\w+$)|(^prod\w+$)'
+          required:
+            - size
+            - app_name
+            - namespace
       x-kubernetes-preserve-unknown-fields: true
   versions:
   - name: v1

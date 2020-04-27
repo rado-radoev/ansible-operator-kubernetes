@@ -1,2 +1,8 @@
 ---
 # defaults file for nodejsapi
+namespace: sharp-nonprod
+size: 2
+managed_by: ansible
+app_name: storybook
+app_type: web
+app_label: "{{ app_name }}-{{ app_type }}"

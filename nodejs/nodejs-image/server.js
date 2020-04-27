@@ -2,8 +2,8 @@
 
 const express = require('express');
 
-const PORT = process.env.APP_PORT;
-const HOST = process.env.APP_HOST;
+const PORT = process.env.APP_PORT || "8080";
+const HOST = process.env.APP_HOST || "0.0.0.0";
 
 const app = express();
 app.get('/', (req, res) => {
