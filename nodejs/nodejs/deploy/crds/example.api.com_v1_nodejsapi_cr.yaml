@@ -7,7 +7,7 @@ metadata:
     "ansible.operator-sdk/verbosity": "3"
 spec:
   # Add fields here
-  size: 3
+  size: 1
   namespace: sharp-nonprod
   app_name: storybook
   app_type: web

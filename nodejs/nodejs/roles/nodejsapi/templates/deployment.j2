@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ app_name }}"
-  namespace: "{{ namespace }}"
+  name: {{ app_name }}
+  namespace: {{ namespace }}
   labels:
     version: 1.0.0
-    managed-by: "{{ managed_by }}"
+    managed-by: {{ managed_by }}
 spec:
-  replicas: "{{ size }}"
+  replicas: {{ size }}
   selector:
     matchLabels:
-      component: "{{ app_label }}"
+      component: {{ app_label }}
   template:
     metadata:
       labels:
-        component: "{{ app_label }}"
+        component: {{ app_label }}
         runtime: nginx
         version: 1.0.0
         managed-by: anisble
     spec:
       containers:
-      - name: "{{ app_name }}" 
+      - name: {{ app_name }}
         image: quay.io/superlamer/storybook
         resources:
           limits:
@@ -30,13 +30,13 @@ spec:
             cpu: 50m
             memory: 50Mi
         ports:
-        - containerPort: "{{ app_port }}"
+        - containerPort: {{ app_port }}
         env:
           - name: APP_HOST
-            value: "{{ app_host }}"
+            value: "{{ app_host | string }}"
           - name: APP_PORT
-            value: "{{ app_port }}"
+            value: "{{ app_port | string}}"
           - name: NODE_ENV
-            value: "{{ node_env }}"
+            value: "{{ node_env | string}}"
       imagePullSecrets:
       - name: quay-creds

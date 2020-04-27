@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  no_log: "{{ molecule_no_log }}"
+  no_log: {{ molecule_no_log }}
   collections:
     - community.kubernetes
 
@@ -18,7 +18,7 @@
 
     - name: Delete RBAC resources
       k8s:
-        definition: "{{ lookup('template', '/'.join([deploy_dir, item])) }}"
+        definition: {{ lookup('template', '/'.join([deploy_dir, item])) }}
         namespace: '{{ namespace }}'
         state: absent
         wait: yes
@@ -29,6 +29,6 @@
 
     - name: Delete Custom Resource Definition
       k8s:
-        definition: "{{ lookup('file', '/'.join([deploy_dir, 'crds/example.com_visitorsapps_crd.yaml'])) }}"
+        definition: {{ lookup('file', '/'.join([deploy_dir, 'crds/example.com_visitorsapps_crd.yaml'])) }}
         state: absent
         wait: yes

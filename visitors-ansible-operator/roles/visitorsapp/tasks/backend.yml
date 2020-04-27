@@ -6,9 +6,9 @@
       apiVersion: apps/v1
       metadata:
         name: visitors-backend
-        namespace: "{{ namespace }}"
+        namespace: {{ namespace }}
       spec:
-        replicas: "{{ size }}"
+        replicas: {{ size }}
         selector:
           matchLabels:
             app: visitors
@@ -21,16 +21,16 @@
           spec:
             containers:
               - name: visitors-backend
-                image: "jdob/visitors-service:1.0.0"
+                image: jdob/visitors-service:1.0.0
                 imagePullPolicy: Always
                 ports:
                   - name: visitors
                     containerPort: 8000
                 env:
                   - name: MYSQL_DATABASE
-                    value: "{{ db_name }}"
+                    value: {{ db_name }}
                   - name: MYSQL_SERVICE_HOST
-                    value: "{{ db_service }}"
+                    value: {{ db_service }}
                   - name: MYSQL_USERNAME
                     valueFrom:
                       secretKeyRef:
@@ -48,7 +48,7 @@
       kind: Service
       metadata:
         name: visitors-backend-service
-        namespace: "{{ namespace }}"
+        namespace: {{ namespace }}
         labels:
           app: visitors
           tier: backend

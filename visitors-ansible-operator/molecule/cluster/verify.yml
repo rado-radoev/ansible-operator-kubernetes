@@ -8,7 +8,7 @@
     - community.kubernetes
 
   vars:
-    custom_resource: "{{ lookup('template', '/'.join([deploy_dir, 'crds/example.com_v1_visitorsapp_cr.yaml'])) | from_yaml }}"
+    custom_resource: {{ lookup('template', '/'.join([deploy_dir, 'crds/example.com_v1_visitorsapp_cr.yaml'])) | from_yaml }}
 
   tasks:
     - name: Create the example.com/v1.VisitorsApp and wait for reconciliation to complete
@@ -21,7 +21,7 @@
         wait_condition:
           type: Running
           reason: Successful
-          status: "True"
+          status: True
 
     - name: Get Pods
       k8s_info:

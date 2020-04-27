@@ -6,11 +6,11 @@
       apiVersion: v1
       metadata:
         name: mysql-auth
-        namespace: "{{ namespace }}"
+        namespace: {{ namespace }}
       type: Opaque
       stringData:
-        username: "{{ db_user }}"
-        password: "{{ db_pass }}"
+        username: {{ db_user }}
+        password: {{ db_pass }}
 - name: deploy mysql
   k8s:
     definition:
@@ -18,7 +18,7 @@
       apiVersion: apps/v1
       metadata:
         name: mysql
-        namespace: "{{ namespace }}"
+        namespace: {{ namespace }}
       spec:
         replicas: 1
         selector:
@@ -33,7 +33,7 @@
           spec:
             containers:
             - name: visitors-mysql
-              image: "mysql:5.7"
+              image: mysql:5.7
               ports:
                 - name: mysql
                   containerPort: 3306
@@ -42,7 +42,7 @@
                 - name: MYSQL_ROOT_PASSWORD
                   value: password
                 - name: MYSQL_DATABASE
-                  value: "{{ db_name }}"
+                  value: {{ db_name }}
                 - name: MYSQL_USER
                   valueFrom:
                     secretKeyRef:
@@ -58,8 +58,8 @@
     definition:
       kind: Service
       metadata:
-        name: "{{ db_service }}"
-        namespace: "{{ namespace }}"
+        name: {{ db_service }}
+        namespace: {{ namespace }}
         labels:
           app: visitors
           tier: mysql

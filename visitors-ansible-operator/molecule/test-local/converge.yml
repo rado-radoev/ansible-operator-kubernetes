@@ -20,7 +20,7 @@
       changed_when: not hash or (hash and hash not in cmd_out)
       vars:
         hash: '{{ prev_hash_raw.stdout }}'
-        cmd_out: '{{ "".join(build_cmd.stdout_lines[-2:]) }}'
+        cmd_out: '{{ .join(build_cmd.stdout_lines[-2:]) }}'
 
 - name: Converge
   hosts: localhost
@@ -30,13 +30,13 @@
 
   vars:
     image: example.com/visitors-ansible-operator:testing
-    operator_template: "{{ '/'.join([template_dir, 'operator.yaml.j2']) }}"
+    operator_template: {{ '/'.join([template_dir, 'operator.yaml.j2']) }}
 
   tasks:
     - name: Create the Operator Deployment
       k8s:
         namespace: '{{ namespace }}'
-        definition: "{{ lookup('template', operator_template) }}"
+        definition: {{ lookup('template', operator_template) }}
         wait: yes
       vars:
         pull_policy: Never

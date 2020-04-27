@@ -17,8 +17,8 @@ spec:
       containers:
         - name: visitors-ansible-operator
           # Replace this with the built image name
-          image: "quay.io/superlamer/visitors"
-          imagePullPolicy: "Always"
+          image: quay.io/superlamer/visitors
+          imagePullPolicy: Always
           volumeMounts:
           - mountPath: /tmp/ansible-operator/runner
             name: runner
@@ -32,7 +32,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
-              value: "visitors-ansible-operator"
+              value: visitors-ansible-operator
             - name: ANSIBLE_GATHERING
               value: explicit
       volumes:

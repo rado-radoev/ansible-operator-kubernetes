@@ -5,7 +5,7 @@ metadata:
   name: visitors-ansible-operator
 rules:
 - apiGroups:
-  - ""
+  - 
   resources:
   - pods
   - services
