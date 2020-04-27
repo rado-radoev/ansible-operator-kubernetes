@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: ewoJImF1dGhzIjogewoJCSJxdWF5LmlvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy44IChkYXJ3aW4pIgoJfSwKCSJjcmVkc1N0b3JlIjogImRlc2t0b3AiLAoJImV4cGVyaW1lbnRhbCI6ICJkaXNhYmxlZCIsCgkic3RhY2tPcmNoZXN0cmF0b3IiOiAia3ViZXJuZXRlcyIKfQ== 
+kind: Secret
+metadata:
+  name: quay-creds
+  namespace: sharp-nonprod
+type: kubernetes.io/dockerconfigjson
+

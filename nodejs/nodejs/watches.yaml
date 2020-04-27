@@ -1,0 +1,5 @@
+---
+- version: v1
+  group: example.api.com
+  kind: NodejsAPI
+  role: nodejsapi

@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: storybook
+  namespace: sharp-nonprod
+  labels:
+    managed-by: ansible
+spec:
+  tls:
+  - hosts: 
+    - storybook.k8s-nonprod.sharp.com
+  rules:
+    - host: storybook.k8s-nonprod.sharp.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: storybook
+              servicePort: 8080
+    

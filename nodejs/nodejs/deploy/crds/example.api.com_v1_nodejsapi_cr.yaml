@@ -1,0 +1,7 @@
+apiVersion: example.api.com/v1
+kind: NodejsAPI
+metadata:
+  name: example-nodejsapi
+spec:
+  # Add fields here
+  size: 3
